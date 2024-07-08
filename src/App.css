@@ -1,38 +1,180 @@
-.App {
+body {
+  font-family: Arial, sans-serif !important;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.prompt-container,
+.container {
+  position: relative;
+  width: calc(100% - 40px);
+  margin: 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.prompt-container {
+  height: fit-content;
+  margin-top: 12px;
+  margin-bottom: 100px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+  .prompt-container,
+  .container {
+    width: calc(100% - 140px);
+    margin: 50px;
+  }
+
+  .prompt-container {
+    margin-top: 0;
+  }
+
+  .container {
+    height: calc(100vh - 140px);
+    overflow-y: scroll;
+  }
+}
+
+@media (min-width: 800px) {
+  .prompt-container,
+  .container {
+    margin: 50px;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  .content-container {
+    flex-direction: row;
+  }
+
+  .prompt-container,
+  .container {
+    width: 100%;
+    margin: 20px;
+  }
+}
+
+@media (min-width: 900px) {
+  .content-container {
+    flex-direction: row;
+  }
+
+  .prompt-container,
+  .container {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+h2 {
+  color: #1a73e8;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+label {
+  font-weight: bold;
+  margin-bottom: 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+select,
+textarea,
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+textarea {
+  height: 300px;
+  resize: none;
+}
+
+button {
+  background-color: #1a73e8;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0d47a1;
+}
+
+p {
+  margin-top: 30px;
+  font-size: 16px;
+  color: black;
+  white-space: pre-wrap;
+}
+
+.copy-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #1a73e87b;
+  width: fit-content;
+  height: fit-content;
+  border: none;
   color: white;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 20px;
+  visibility: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  z-index: 9999;
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.loader {
+  position: absolute;
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #1a73e8;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  z-index: 100000;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  visibility: hidden;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
