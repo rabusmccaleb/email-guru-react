@@ -2,6 +2,8 @@
 
 Email Marketing Guru is a simple web application that generates customized marketing emails based on user input. Email me to try it out live!
 
+*This project ~approximately 2 hours. It was built for a friend to demo an idea.
+  
 <img width="1512" alt="Screenshot 2024-07-08 at 9 30 36 AM" src="https://github.com/rabusmccaleb/email-guru-react/assets/69118018/7abcc35a-1d70-482a-b5a9-03d84eea698b">
 
 
