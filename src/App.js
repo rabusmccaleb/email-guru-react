@@ -20,6 +20,18 @@ function App() {
       .catch(err => console.error('Failed to copy: ', err));
   };
 
+    const businessCategories = [
+      "Restaurant", "Retail", "Technology", "Consulting", "Healthcare",
+      "Education", "Finance", "Real Estate", "Hospitality", "Entertainment",
+      "Automotive", "Legal", "Marketing", "Construction", "Fitness",
+      "Beauty & Wellness", "Travel", "Food & Beverage", "Manufacturing", "Fashion",
+      "Art & Design", "Media & Communication", "Nonprofit", "E-commerce", "Transportation",
+      "Insurance", "Technology Services", "Consulting Services", "Event Planning", "Software Development",
+      "Architecture", "Interior Design", "Graphic Design", "Photography", "Music",
+      "Film & Video", "Publishing", "Sports", "Telecommunications", "Energy",
+      "Agriculture", "Environmental Services"
+    ];
+
   const submitForm = () => {
     const businessCategory = document.getElementById("business_category").value;
     const uniqueFeatures = document.getElementById("unique_features").value;
@@ -44,22 +56,22 @@ function App() {
           { 
             role: "user",
             content: `Create a marketing email to send out to customers.
-
-It should be no longer than 5 sentences and really do a good job converting the customer.
-
-Use the info below to generate a message
-
-Business Category: ${businessCategory}
-
-Business Name: ${businessName}
-
-What makes your business different and special?: ${uniqueFeatures}
-
-What separates your business from the competition?: ${competitionDifference}
-
----
-
-`
+                      
+                      It should be no longer than 5 sentences and really do a good job converting the customer.
+                      
+                      Use the info below to generate a message
+                      
+                      Business Category: ${businessCategory}
+                      
+                      Business Name: ${businessName}
+                      
+                      What makes your business different and special?: ${uniqueFeatures}
+                      
+                      What separates your business from the competition?: ${competitionDifference}
+                      
+                      ---
+                      
+                      `
           }
         ],
         model: "mixtral-8x7b-32768"
@@ -82,48 +94,9 @@ What separates your business from the competition?: ${competitionDifference}
         <label htmlFor="business_category">Select Business Category:</label>
         <select id="business_category" name="business_category">
           <option value="">Select One</option>
-          <option value="Restaurant">Restaurant</option>
-          <option value="Retail">Retail</option>
-          <option value="Technology">Technology</option>
-          <option value="Consulting">Consulting</option>
-          <option value="Healthcare">Healthcare</option>
-          <option value="Education">Education</option>
-          <option value="Finance">Finance</option>
-          <option value="Real Estate">Real Estate</option>
-          <option value="Hospitality">Hospitality</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Automotive">Automotive</option>
-          <option value="Legal">Legal</option>
-          <option value="Marketing">Marketing</option>
-          <option value="Construction">Construction</option>
-          <option value="Fitness">Fitness</option>
-          <option value="Beauty & Wellness">Beauty & Wellness</option>
-          <option value="Travel">Travel</option>
-          <option value="Food & Beverage">Food & Beverage</option>
-          <option value="Manufacturing">Manufacturing</option>
-          <option value="Fashion">Fashion</option>
-          <option value="Art & Design">Art & Design</option>
-          <option value="Media & Communication">Media & Communication</option>
-          <option value="Nonprofit">Nonprofit</option>
-          <option value="E-commerce">E-commerce</option>
-          <option value="Transportation">Transportation</option>
-          <option value="Insurance">Insurance</option>
-          <option value="Technology Services">Technology Services</option>
-          <option value="Consulting Services">Consulting Services</option>
-          <option value="Event Planning">Event Planning</option>
-          <option value="Software Development">Software Development</option>
-          <option value="Architecture">Architecture</option>
-          <option value="Interior Design">Interior Design</option>
-          <option value="Graphic Design">Graphic Design</option>
-          <option value="Photography">Photography</option>
-          <option value="Music">Music</option>
-          <option value="Film & Video">Film & Video</option>
-          <option value="Publishing">Publishing</option>
-          <option value="Sports">Sports</option>
-          <option value="Telecommunications">Telecommunications</option>
-          <option value="Energy">Energy</option>
-          <option value="Agriculture">Agriculture</option>
-          <option value="Environmental Services">Environmental Services</option>
+          {businessCategories.map((category, index) => (
+            <option key={index} value={category}>{category}</option>
+          ))}
         </select>
         <label htmlFor="business_name">Business Name</label>
         <input id="business_name" name="business_name" placeholder="Business Name" type="text"/>
